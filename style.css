@@ -46,12 +46,70 @@ header {
   flex-shrink: 0;
 }
 
-.navbar {
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px 0;
+} */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
 }
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Space between center links and right links */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem; /* Space between nav items */
+}
+
+.right-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Hamburger Menu Icon Styling */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+/* ✅ Animate bars when active */
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
 
 .logo {
   font-weight: 500;
@@ -364,7 +422,6 @@ footer {
 }
 
 /* --- Featured Projects Section --- */
-/* --- Featured Projects Section --- */
 .featured-projects {
   padding: 80px 0;
   max-width: 1000px;
@@ -415,10 +472,7 @@ footer {
 
 .project-details {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
-  /* Reduced the gap from 20px to 10px */
   gap: 10px; 
 }
 
@@ -717,7 +771,6 @@ footer {
 }
 
 /* --- Footer Section --- */
-/* --- Footer Section --- */
 .site-footer {
   display: flex;
   justify-content: space-between;
@@ -845,28 +898,336 @@ footer {
 
 
 /* Responsive adjustments for new sections */
-@media (max-width: 768px) {
+/* --- Responsive Styles --- */
+
+/* For Tablets and Smaller Desktops */
+@media (max-width: 1024px) {
+  .page-wrapper {
+    padding: 0 30px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+   .process-section {
+    padding: 80px 40px;
+  }
+
+  .process-section h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .process-steps {
+    gap: 30px;
+  }
+
+  .step-item {
+    flex: 1 1 calc(50% - 30px);
+    padding: 32px;
+  }
+
+  .step-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .step-content p {
+    font-size: 0.95rem;
+  }
+
   .cta-section {
     grid-template-columns: 1fr;
     text-align: center;
-    padding: 60px 20px;
   }
 
-  .cta-content h2 {
-    justify-content: center;
-  }
-
-  .cta-content p {
-    margin-left: auto;
-    margin-right: auto;
+  .cta-content {
+    align-items: center;
   }
 
   .deco-grid {
     display: none;
   }
+}
 
-  .site-footer {
+/* ---------------- Responsive Styles ---------------- */
+@media (max-width: 992px) {
+  .page-wrapper {
+    padding: 0 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+    .process-section {
+    padding: 60px 20px;
+  }
+
+  .process-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .process-steps {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .step-item {
+    flex: 1 1 100%;
+    max-width: 480px;
+    text-align: center;
+    align-items: center;
+    padding: 28px;
+  }
+
+  .step-number {
+    font-size: 1.6rem;
+  }
+
+  .step-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .step-content p {
+    font-size: 0.9rem;
+  }
+
+  .btn-gradient-border {
+    margin-top: 10px;
+  }
+  .project-item {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    gap: 40px;
+    padding: 40px;
+  }
+
+  .project-image {
+    width: 100%;
+    height: 250px;
+  }
+
+  .cta-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cta-content p {
+    max-width: 100%;
+    margin: 0 auto 32px;
+  }
+
+  .deco-grid {
+    margin: 0 auto;
+  }
+   footer {
+    padding: 50px 40px;
     gap: 30px;
+  }
+
+  footer .footer-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  footer .footer-left,
+  footer .footer-right,
+  footer .footer-center {
+    text-align: center;
+  }
+
+  footer .social-links {
+    justify-content: center;
+  }
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links-wrapper {
+    display: none;
+    width: 100%;
+  }
+
+  .nav-links-wrapper.active {
+    display: block;
+  }
+
+  .center-links {
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--nav-bg);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .right-links {
+    display: none;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .process-section {
+    padding: 40px 0;
+  }
+
+  .step-item {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-stack {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cta-section {
+    padding: 80px 20px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  footer .footer-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  footer .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  footer .social-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer p,
+  footer a {
+    font-size: 0.9rem;
+  }
+}
+
+/* For very small phones */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+   .process-section {
+    padding: 50px 16px;
+  }
+
+  .process-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* space between steps */
+  }
+
+  .step-item {
+    display: flex;
+    flex-direction: column; /* stack number above content */
+    align-items: center; /* center everything */
+    text-align: center; /* center text */
+    padding: 20px 16px;
+  }
+
+  .step-number {
+    font-size: 2rem; /* larger and centered */
+    margin-bottom: 12px; /* space between number and content */
+  }
+
+  .step-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .step-content p {
+    font-size: 0.9rem;
+  }
+
+  .step-icon {
+    margin-bottom: 8px; /* space below icon */
+  }
+
+  .examples-btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    margin-top: 10px;
+  }
+
+  .hire-btn,
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .project-item {
+    padding: 24px;
+  }
+
+  .project-name {
+    font-size: 1.3rem;
+  }
+
+  .testimonial-card {
+    padding: 20px;
+  }
+
+  .cta-content h2 {
+    font-size: 1.8rem;
+  }
+  footer {
+    padding: 30px 16px;
+  }
+
+  footer .footer-actions {
+    gap: 12px;
+  }
+
+  footer .footer-links a {
+    display: block;
+    padding: 4px 0;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+  }
+
+  footer .social-links a {
+    font-size: 1.1rem;
   }
 }
