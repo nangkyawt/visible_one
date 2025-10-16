@@ -1,0 +1,872 @@
+/* --- Global Styles & Variables --- */
+:root {
+  --bg-color: #111111;
+  --grid-color: rgba(255, 255, 255, 0.07);
+  --text-color: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-color: #333333;
+  --gradient-start: #a855f7;
+  --gradient-end: #6366f1;
+  --nav-bg: #1c1c1c;
+  --nav-active-bg: #333333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  /* Allow vertical scroll, prevent horizontal */
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Use min-height to ensure footer stays down on short pages */
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- Header & Navigation --- */
+header {
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.logo {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.center-links {
+  list-style: none;
+  display: flex;
+  background-color: var(--nav-bg);
+  border-radius: 50px;
+  padding: 4px;
+  position: relative; /* Essential for the pseudo-element positioning */
+  z-index: 1; /* Ensures the content is above the pseudo-element */
+}
+
+/* Pseudo-element for the gradient border */
+.center-links::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  padding: 1px; /* The thickness of the border */
+  background: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1; /* Puts the pseudo-element behind the main content */
+}
+
+.center-links a {
+  color: var(--text-secondary);
+  padding: 8px 18px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.center-links a.active {
+  background-color: var(--nav-active-bg);
+  color: var(--text-color);
+}
+
+.right-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hire-btn {
+ background: linear-gradient(90deg, #7A87FB 0%, #FFD49C 100%);
+  color: rgb(20, 19, 19);
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.hire-btn:hover {
+  transform: translateY(-2px);
+  background: #FFFFFF; 
+  color: #FFFFFF;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%);
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #070707; /* Or a solid color of your choice */
+}
+
+/* --- Hero Section --- */
+.hero {
+  flex-grow: 1;
+  min-height: 70vh;
+  /* Give it some minimum height */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.grid-background {
+  position: absolute;
+  inset: -50px;
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 100px 100px;
+  z-index: -1;
+}
+
+.hero-content {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.hero-content h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --- Diamonds --- */
+.diamond {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+  animation: pulse 4s infinite ease-in-out;
+  z-index: -1;
+}
+
+#diamond1 {
+  top: 55%;
+  left: 20%;
+}
+
+#diamond2 {
+  top: 25%;
+  right: 25%;
+  animation-delay: -2s;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: rotate(45deg) scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+
+/* --- Process Section --- */
+.process-section {
+  padding: 80px 0;
+  max-width: 1000px;
+  margin: 40px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.process-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 60px;
+  color: var(--text-color);
+}
+
+.process-section h2 span {
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  position: relative;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  position: relative;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  flex-shrink: 0;
+  background-color: var(--nav-bg);
+}
+
+.step-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.step-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-content p {
+  font-size: 0.95rem;
+  /* color: var(--text-secondary); */
+  color: #FFFFFF;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.step-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.examples-btn {
+  /* Set a transparent background and text color */
+  background: transparent;
+  color: var(--text-secondary);
+
+  /* Define the border width and style */
+  border: 2px solid;
+  /* The width is important, the color is a fallback */
+
+  /* The simple way to apply the gradient border */
+  border-image: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%) 1;
+
+  /* Keep other styles */
+  padding: 8px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-top: 10px;
+  border-image: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.step-avatars {
+  display: flex;
+  gap: -10px;
+  margin-left: auto;
+  position: relative;
+  top: 50px;
+}
+
+
+.process-steps::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  /* Centered on the 40px number div */
+  top: 40px;
+  height: calc(100% - 40px);
+  width: 1px;
+  background-color: var(--border-color);
+  z-index: -1;
+}
+
+
+/* --- Footer --- */
+footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.tech-stack {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--text-secondary);
+}
+
+.tech-stack .separator {
+  color: var(--gradient-start);
+  font-size: 1.5rem;
+}
+
+/* --- Featured Projects Section --- */
+/* --- Featured Projects Section --- */
+.featured-projects {
+  padding: 80px 0;
+  max-width: 1000px;
+  margin: 40px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.featured-projects h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 40px;
+  color: var(--text-secondary);
+}
+
+.featured-projects h2 span {
+  color: var(--gradient-start);
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+}
+
+.project-item {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  justify-content: flex-start; /* Align items to the start of the container */
+  background-color: #151515; /* Dark background for the card */
+  border-radius: 12px;
+  padding: 55px; /* Ample padding for a bigger card */
+  width: 1093px; /* Fixed width as requested */
+  height: 655.5px; /* Fixed height as requested */
+  gap: 107px; /* This gap is between the image and project-details container */
+}
+
+.project-image {
+  /* Increased image size to match the larger card */
+  width: 250px; 
+  height: 250px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7A87FB, #FFD49C);
+  transition: transform 0.3s ease;
+}
+
+.project-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* Reduced the gap from 20px to 10px */
+  gap: 10px; 
+}
+
+.project-number {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f0f0f;
+  overflow: hidden;
+  background: linear-gradient(180deg, #7A87FB 0%, #FFD49C 100%);
+  
+  /* Use a subtle border to create a layered effect */
+  border: 1px solid transparent; 
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* bottom gradient ring only */
+.project-number::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 180deg,
+    transparent 0deg,
+    transparent 170deg,
+    #7A87FB 190deg,
+    #FFD49C 250deg,
+    transparent 270deg,
+    transparent 360deg
+  );
+  mask: radial-gradient(circle at center, transparent 74%, black 75%);
+  -webkit-mask: radial-gradient(circle at center, transparent 74%, black 75%);
+  opacity: 1;
+  z-index: 1;
+}
+/* inner dark background */
+.project-number::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: #0f0f0f;
+  z-index: 2;
+}
+
+/* gradient number text */
+.project-number span {
+  position: relative;
+  z-index: 3;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #a0a0a0;
+  background-image: linear-gradient(135deg, #A855F7, #FFD49C);
+  -webkit-background-clip: text;
+  background-clip: text;
+ 
+}
+
+.project-name {
+  font-size: 2rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.project-item:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-item:hover .project-name {
+  color: var(--gradient-start);
+}
+
+.testimonials {
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px 20px;
+}
+
+.testimonials h2 {
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* The sparkle icons from the image */
+.testimonials h2::after,
+.testimonials h2::before {
+  content: '✦';
+  color: #888eff;
+  font-size: 18px;
+}
+
+
+.testimonials-grid {
+  display: grid;
+  /* Creates a responsive grid that switches from 2 columns to 1 */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+/* Gradient border container */
+.testimonial-card-container {
+  padding: 1px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #C89B6D 0%, #1c1c1e 40%);
+}
+
+.testimonial-card {
+  background-color: #1C1C1E;
+  padding: 32px;
+  border-radius: 15px;
+  /* Slightly smaller to reveal the gradient border */
+  height: 100%;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+  margin-right: 16px;
+}
+
+.client-info h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.client-info p {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #8E8E93;
+}
+
+.quote-icon {
+  position: absolute;
+  top: -12px;
+  right: 0;
+  font-size: 60px;
+  font-family: serif;
+  line-height: 1;
+  /* Gradient text color for the quotes */
+  background: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.testimonial-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #AEAEB2;
+}
+
+.cta-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 120px 40px;
+  border-bottom: 1px solid #2a2a2c;
+}
+
+.cta-content h2 {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.cta-content h2::after {
+  content: '✦';
+  color: #c5a4ff;
+  font-size: 24px;
+  filter: drop-shadow(0 0 5px #c5a4ff);
+}
+
+.cta-content p {
+  font-size: 16px;
+  color: #9a9a9e;
+  max-width: 400px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.cta-button {
+  background: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%);
+  color: #121212;
+  font-weight: 500;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 1px; 
+  background-color: var(--nav-bg); 
+  border-radius: 50px;
+  z-index: -1; 
+}
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(122, 135, 251, 0.4); 
+  background: #FFFFFF; 
+  color: #FFFFFF;
+}
+
+/* --- Decorative Grid --- */
+.deco-grid {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  max-width: 300px;
+  justify-self: center;
+}
+
+.deco-grid .grid-line {
+  position: absolute;
+  background-color: #3f3f46;
+}
+
+.deco-grid .horizontal {
+  width: 100%;
+  height: 1px;
+}
+
+.deco-grid .vertical {
+  width: 1px;
+  height: 100%;
+}
+
+#h-line-1 {
+  top: 33.33%;
+  left: 0;
+}
+
+#h-line-2 {
+  top: 66.66%;
+  left: 0;
+}
+
+#v-line-1 {
+  left: 33.33%;
+  top: 0;
+}
+
+#v-line-2 {
+  left: 66.66%;
+  top: 0;
+}
+
+.deco-grid .sparkle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+}
+
+#sparkle-1 {
+  top: 33.33%;
+  left: 66.66%;
+  transform: translate(-50%, -50%);
+}
+
+#sparkle-2 {
+  top: 66.66%;
+  left: 33.33%;
+  transform: translate(-50%, -50%);
+}
+
+/* --- Footer Section --- */
+/* --- Footer Section --- */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+  background-color: #1a1a1c;
+  /* A slightly lighter bg for the footer bar */
+  border-top: 1px solid #2a2a2c;
+}
+
+/* Wrapper for right side buttons */
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* "Hire me" pill button */
+.hire-me-btn {
+  background: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%);
+  color: #121212;
+  font-weight: 500;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
+/* Inner border effect (mimicked by slightly smaller background) */
+.hire-btn::before {
+  content: '';
+  position: absolute;
+  inset: 1px; 
+  background-color: var(--nav-bg); 
+  border-radius: 50px;
+  z-index: -1; 
+}
+
+/* Optional: Add a subtle outer glow on hover, similar to the image */
+.hire-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(122, 135, 251, 0.4); 
+  background: #FFFFFF; 
+  color: #FFFFFF;
+}
+
+
+
+/* Separate circular profile icon button */
+.profile-icon-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%);
+  border-radius: 50%;
+  color: #121212;
+}
+
+.profile-icon-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #111010;
+}
+
+
+/* Your existing styles for logo and social links */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.logo-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: #a489f5;
+  clip-path: polygon(50% 0%, 65% 40%, 100% 40%, 75% 65%, 85% 100%, 50% 80%, 15% 100%, 25% 65%, 0% 40%, 35% 40%);
+}
+
+.social-links {
+  padding: 1.5px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #f0c381, #a489f5);
+}
+
+.social-links-inner {
+  display: flex;
+  gap: 8px;
+  background-color: #111111;
+  padding: 8px;
+  border-radius: 50px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333336;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.social-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: #a0a0a0;
+}
+
+.social-icon svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  stroke: #fff;
+}
+
+
+
+/* Responsive adjustments for new sections */
+@media (max-width: 768px) {
+  .cta-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .cta-content h2 {
+    justify-content: center;
+  }
+
+  .cta-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .deco-grid {
+    display: none;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
