@@ -863,10 +863,50 @@ footer {
 }
 
 .social-links {
-  padding: 1.5px;
-  border-radius: 50px;
-  background: linear-gradient(90deg, #f0c381, #a489f5);
+  /* Layout and Sizing */
+  display: inline-flex; /* Wraps content snugly */
+  align-items: center;  /* Vertically center the icons */
+  gap: 10px;           /* Space between each icon */
+  
+  /* Background and Shape */
+  background-color: #1C1C1C; /* Your dark background */
+  border-radius: 290px;     /* Creates the pill shape */
+  padding: 8px 12px;        /* Padding inside the container */
+
+  /* Positioning for the gradient border */
+  position: relative;
+  z-index: 1;
 }
+
+/* This pseudo-element creates the gradient border */
+.social-links::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  
+  border-radius: inherit; /* Match the parent's shape */
+  
+  padding: 1.5px; /* This becomes your border width */
+  background: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%);
+  
+  /* Masking trick to create the border effect */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  z-index: -1;
+}
+
+.social-img{
+ display: flex;
+  gap: 10px;
+  background-color: #111111;
+  padding: 8px;
+  border-radius: 50px;
+border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
+}
+
 
 .social-links-inner {
   display: flex;
@@ -875,31 +915,6 @@ footer {
   padding: 8px;
   border-radius: 50px;
 }
-
-.social-icon {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #333336;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.social-icon svg {
-  width: 18px;
-  height: 18px;
-  stroke: #a0a0a0;
-}
-
-.social-icon svg {
-  width: 18px;
-  height: 18px;
-  opacity: 0.7;
-  stroke: #fff;
-}
-
 
 
 /* Responsive adjustments for new sections */
