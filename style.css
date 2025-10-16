@@ -573,12 +573,12 @@ footer {
 }
 
 /* The sparkle icons from the image */
-.testimonials h2::after,
+/* .testimonials h2::after,
 .testimonials h2::before {
   content: '✦';
   color: #888eff;
   font-size: 18px;
-}
+} */
 
 
 .testimonials-grid {
@@ -660,28 +660,37 @@ footer {
   border-bottom: 1px solid #2a2a2c;
 }
 
-.cta-content h2 {
-  font-size: 48px;
-  font-weight: 600;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #fff;
+.cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center; /* center content */
+  padding: 40px 20px;
 }
 
-.cta-content h2::after {
-  content: '✦';
+.cta-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem; /* 48px roughly */
+  font-weight: 600;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+
+}
+
+.cta-content h2 .star {
+  font-size: 1.5rem;
   color: #c5a4ff;
-  font-size: 24px;
   filter: drop-shadow(0 0 5px #c5a4ff);
 }
 
 .cta-content p {
-  font-size: 16px;
-  color: #9a9a9e;
-  max-width: 400px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1rem; /* 16px */
   line-height: 1.6;
+  color: #9a9a9e;
   margin-bottom: 32px;
 }
 
@@ -694,20 +703,24 @@ footer {
   border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
+  position: relative;
+  transition: all 0.3s ease;
 }
+
 .cta-button::before {
   content: '';
   position: absolute;
-  inset: 1px; 
-  background-color: var(--nav-bg); 
+  inset: 1px;
+  background-color: var(--nav-bg, #000); /* fallback if variable not defined */
   border-radius: 50px;
-  z-index: -1; 
+  z-index: -1;
 }
+
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(122, 135, 251, 0.4); 
-  background: #FFFFFF; 
-  color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(122, 135, 251, 0.4);
+  background: #FFFFFF;
+  color: #121212;
 }
 
 /* --- Decorative Grid --- */
