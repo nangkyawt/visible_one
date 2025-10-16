@@ -205,14 +205,36 @@ header {
 }
 
 .grid-background {
-  position: absolute;
-  inset: -50px;
-  background-image:
-    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-  background-size: 100px 100px;
-  z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Place it behind the content */
+
+    /* Layered gradients for the grid lines */
+    background-image: 
+        repeating-linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 100px),
+        repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 100px);
+    
+    background-size: 100px 100px; /* Controls the spacing of the grid */
 }
+
+.grid-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place glows behind the grid lines */
+
+    /* The radial gradients for the auras */
+    background-image: 
+        radial-gradient(ellipse at 80% 20%, rgba(16, 16, 17, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse at 20% 30%, rgba(12, 12, 12, 0.15) 0%, transparent 70%);
+}
+
 
 .hero-content {
   max-width: 600px;
@@ -223,7 +245,7 @@ header {
 }
 
 .hero-content h1 {
-  font-size: 3.2rem;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -358,18 +380,10 @@ opacity: 1;
 }
 
 .examples-btn {
-  /* Set a transparent background and text color */
   background: transparent;
   color: var(--text-secondary);
-
-  /* Define the border width and style */
   border: 2px solid;
-  /* The width is important, the color is a fallback */
-
-  /* The simple way to apply the gradient border */
   border-image: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%) 1;
-
-  /* Keep other styles */
   padding: 8px 18px;
   border-radius: 50px;
   cursor: pointer;
@@ -382,8 +396,6 @@ opacity: 1;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
-
 
 .step-avatars {
   display: flex;
@@ -408,7 +420,7 @@ opacity: 1;
 
 
 /* --- Footer --- */
-footer {
+/* footer {
   padding: 24px 0;
   border-top: 1px solid var(--border-color);
   flex-shrink: 0;
@@ -424,7 +436,60 @@ footer {
 .tech-stack .separator {
   color: var(--gradient-start);
   font-size: 1.5rem;
+} */
+
+footer1 {
+    display: block;
+    width: 100%;
+    /* Borders on top and bottom */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.tech-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 2.5rem;
+    height: 80px; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 1456; */
+height: 70;
+top: 719px;
+left: -8px;
+gap: 99px;
+angle: 0 deg;
+opacity: 1;
+padding-top: 20px;
+padding-right: 10px;
+padding-bottom: 20px;
+padding-left: 10px;
+border-top-width: 1px;
+border-bottom-width: 1px;
+border-width: 1px, 0px, 1px, 0px;
+
+border-style: solid;
+
+border-color: #FFFFFF40;
+
+
+}
+
+.tech-stack span {
+    color: #a0a0a0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.tech-stack .separator-img {
+    height: 14px;
+    width: 14px;
+    opacity: 1; /* Makes the star separators more subtle */
+}
+
+
 
 /* --- Featured Projects Section --- */
 .featured-projects {
@@ -433,13 +498,15 @@ footer {
   margin: 40px auto;
   position: relative;
   z-index: 1;
+  color: #FFFFFF;
+
 }
 
 .featured-projects h2 {
   font-size: 1.8rem;
   font-weight: 500;
   margin-bottom: 40px;
-  color: var(--text-secondary);
+  color: #FFFFFF;
 }
 
 .featured-projects h2 span {
@@ -477,7 +544,10 @@ footer {
 
 .project-details {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
+  /* Reduced the gap from 20px to 10px */
   gap: 10px; 
 }
 
@@ -489,57 +559,51 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #0f0f0f;
-  overflow: hidden;
-  background: linear-gradient(180deg, #7A87FB 0%, #FFD49C 100%);
-  
-  /* Use a subtle border to create a layered effect */
-  border: 1px solid transparent; 
-  overflow: hidden;
-  z-index: 1;
 }
 
-/* bottom gradient ring only */
+/* --- The Gradient Border (Bottom Arc Only) --- */
 .project-number::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -1px; 
   border-radius: 50%;
-  background: conic-gradient(
-    from 180deg,
-    transparent 0deg,
-    transparent 170deg,
-    #7A87FB 190deg,
-    #FFD49C 250deg,
-    transparent 270deg,
-    transparent 360deg
-  );
-  mask: radial-gradient(circle at center, transparent 74%, black 75%);
-  -webkit-mask: radial-gradient(circle at center, transparent 74%, black 75%);
-  opacity: 1;
   z-index: 1;
+
+  /* Creates a 90-degree gradient arc at the bottom */
+ background: 
+    /* LAYER 1 (Top): The vibrant bottom arc remains the same. */
+    conic-gradient(
+      transparent 135deg,
+      #FFD49C 135deg,
+      #7A87FB 225deg,
+      transparent 225deg
+    ),
+    /* LAYER 2 (Bottom): A full circle with a subtle grey color. */
+    conic-gradient(
+      #404040, #404040 /* This is the faint color for the other sides */
+    );
 }
-/* inner dark background */
+
+/* --- The Dark Inner Background with a Subtle Gradient --- */
 .project-number::after {
   content: "";
   position: absolute;
-  inset: 3px;
+  inset: 0.5px; /* Controls the border's thickness */
   border-radius: 50%;
-  background: #0f0f0f;
   z-index: 2;
+  background: linear-gradient(160deg, #2a2a2f, #0f0f0f);
 }
 
-/* gradient number text */
+/* --- The Number Text with a Gradient --- */
 .project-number span {
   position: relative;
-  z-index: 3;
+  z-index: 3; /* Must be on top of everything */
   font-size: 1.2rem;
   font-weight: 600;
-  color: #a0a0a0;
-  background-image: linear-gradient(135deg, #A855F7, #FFD49C);
+  background-image: linear-gradient(180deg, #e0e0e0 20%, #845ef7 100%);
   -webkit-background-clip: text;
   background-clip: text;
- 
+  color: transparent; /* Text color must be transparent for the gradient to show */
 }
 
 .project-name {
@@ -550,10 +614,6 @@ footer {
 
 .project-item:hover .project-image {
   transform: scale(1.05);
-}
-
-.project-item:hover .project-name {
-  color: var(--gradient-start);
 }
 
 .testimonials {
@@ -571,15 +631,6 @@ footer {
   align-items: center;
   gap: 12px;
 }
-
-/* The sparkle icons from the image */
-/* .testimonials h2::after,
-.testimonials h2::before {
-  content: '✦';
-  color: #888eff;
-  font-size: 18px;
-} */
-
 
 .testimonials-grid {
   display: grid;
@@ -711,7 +762,7 @@ footer {
   content: '';
   position: absolute;
   inset: 1px;
-  background-color: var(--nav-bg, #000); /* fallback if variable not defined */
+  background-color: var(--nav-bg, #fff); 
   border-radius: 50px;
   z-index: -1;
 }
@@ -720,7 +771,7 @@ footer {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(122, 135, 251, 0.4);
   background: #FFFFFF;
-  color: #121212;
+  color: #ece7e7;
 }
 
 /* --- Decorative Grid --- */
@@ -730,11 +781,19 @@ footer {
   width: 100%;
   max-width: 300px;
   justify-self: center;
+  
 }
 
 .deco-grid .grid-line {
   position: absolute;
   background-color: #3f3f46;
+  width: 392.0204162597656;
+height: 392.0204162597656;
+top: 5136px;
+left: 851px;
+angle: 0 deg;
+opacity: 1;
+
 }
 
 .deco-grid .horizontal {
@@ -836,8 +895,6 @@ footer {
   color: #FFFFFF;
 }
 
-
-
 /* Separate circular profile icon button */
 .profile-icon-btn {
   display: flex;
@@ -880,13 +937,9 @@ footer {
   display: inline-flex; /* Wraps content snugly */
   align-items: center;  /* Vertically center the icons */
   gap: 10px;           /* Space between each icon */
-  
-  /* Background and Shape */
-  background-color: #1C1C1C; /* Your dark background */
-  border-radius: 290px;     /* Creates the pill shape */
-  padding: 8px 12px;        /* Padding inside the container */
-
-  /* Positioning for the gradient border */
+  background-color: #1C1C1C;
+  border-radius: 290px;     
+  padding: 8px 12px;        
   position: relative;
   z-index: 1;
 }
