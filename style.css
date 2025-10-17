@@ -99,7 +99,7 @@ header {
   border-radius: 2px;
   transition: all 0.3s ease;
 }
-/* ✅ Animate bars when active */
+
 .menu-toggle.active .bar:nth-child(1) {
   transform: rotate(45deg) translateY(8px);
 }
@@ -172,13 +172,25 @@ header {
   border-radius: 50px;
   font-weight: 500;
   transition: transform 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .hire-btn:hover {
   transform: translateY(-2px);
   background: #FFFFFF; 
-  color: #FFFFFF;
+  color: #121212;
+  box-shadow: 0 4px 15px rgba(122, 135, 251, 0.4);
 }
+
+.hire-btn::before {
+  content: '';
+  position: absolute;
+  inset: 1px;   
+  border-radius: 50px;
+  z-index: -1; 
+} 
+
 
 .profile-icon {
   width: 40px;
@@ -196,7 +208,6 @@ header {
 .hero {
   flex-grow: 1;
   min-height: 70vh;
-  /* Give it some minimum height */
   position: relative;
   display: flex;
   justify-content: center;
@@ -205,48 +216,59 @@ header {
 }
 
 .grid-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Place it behind the content */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Place it behind the content */
 
-    /* Layered gradients for the grid lines */
-    background-image: 
-        repeating-linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 100px),
-        repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 100px);
-    
-    background-size: 100px 100px; /* Controls the spacing of the grid */
+  /* Layered gradients for the grid lines */
+  background-image: 
+    repeating-linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 100px),
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 100px);
+  
+  background-size: 100px 100px;
+  pointer-events: none; /* <-- FIX: Makes grid unclickable */
 }
 
 .grid-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Place glows behind the grid lines */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place glows behind the grid lines */
 
-    /* The radial gradients for the auras */
-    background-image: 
-        radial-gradient(ellipse at 80% 20%, rgba(16, 16, 17, 0.15) 0%, transparent 70%),
-        radial-gradient(ellipse at 20% 30%, rgba(12, 12, 12, 0.15) 0%, transparent 70%);
+  /* The radial gradients for the auras */
+  background-image: 
+    radial-gradient(ellipse at 80% 20%, rgba(16, 16, 17, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse at 20% 30%, rgba(12, 12, 12, 0.15) 0%, transparent 70%);
 }
 
 
 .hero-content {
-  max-width: 600px;
+  max-width: 500px; /* <-- Reduced max-width slightly to match image better */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  position: relative;
+  z-index: 3;
+  pointer-events: auto; 
+  /* --- ADDED FOR CARD EFFECT --- */
+  background-color: #141416; 
+  padding: 48px;             
+  border-radius: 12px;       
+  border: 1px solid #2a2a2c; 
 }
 
 .hero-content h1 {
-  font-size: 32px;
-  font-weight: 700;
+  /* font-family: 'Poppins'; */
+  margin-top: 0;
+  font-size: 25px;
+  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -256,16 +278,23 @@ header {
   line-height: 1.6;
 }
 
-/* --- Diamonds --- */
+/* --- ADDED .diamond STYLES (FROM IMAGE) --- */
 .diamond {
   position: absolute;
   width: 16px;
   height: 16px;
   background-color: white;
   transform: rotate(45deg);
-  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 20px 7px rgba(255, 255, 255, 0.9);
   animation: pulse 4s infinite ease-in-out;
-  z-index: -1;
+  z-index: 2; 
+  pointer-events: none; 
+}
+
+.diamond img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
 }
 
 #diamond1 {
@@ -280,7 +309,6 @@ header {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     transform: rotate(45deg) scale(1);
@@ -293,6 +321,31 @@ header {
   }
 }
 
+.hire-me-btn {
+  background: linear-gradient(90deg, #7A87FB 0%, #FFD49C 100%);
+  color: rgb(20, 19, 19);
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hire-me-btn:hover {
+  transform: translateY(-2px);
+  background: #FFFFFF; 
+  color: #121212;
+  box-shadow: 0 4px 15px rgba(122, 135, 251, 0.4);
+}
+
+.hire-me-btn::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 50px;
+  z-index: -2;
+}
 
 /* --- Process Section --- */
 .process-section {
@@ -370,7 +423,7 @@ header {
 }
 
 .step-icon {
- width: 56.00000531260322;
+width: 56.00000531260322;
 height: 56.00000531260322;
 top: -3px;
 left: -0px;
@@ -469,12 +522,8 @@ padding-left: 10px;
 border-top-width: 1px;
 border-bottom-width: 1px;
 border-width: 1px, 0px, 1px, 0px;
-
 border-style: solid;
-
 border-color: #FFFFFF40;
-
-
 }
 
 .tech-stack span {
@@ -747,7 +796,7 @@ border-color: #FFFFFF40;
 
 .cta-button {
   background: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%);
-  color: #121212;
+  color: rgb(20, 19, 19);
   font-weight: 500;
   border: none;
   padding: 14px 28px;
@@ -762,7 +811,7 @@ border-color: #FFFFFF40;
   content: '';
   position: absolute;
   inset: 1px;
-  background-color: var(--nav-bg, #fff); 
+  background: #FFFFFF;
   border-radius: 50px;
   z-index: -1;
 }
@@ -771,7 +820,7 @@ border-color: #FFFFFF40;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(122, 135, 251, 0.4);
   background: #FFFFFF;
-  color: #ece7e7;
+  color: #121212;
 }
 
 /* --- Decorative Grid --- */
@@ -788,11 +837,11 @@ border-color: #FFFFFF40;
   position: absolute;
   background-color: #3f3f46;
   width: 392.0204162597656;
-height: 392.0204162597656;
-top: 5136px;
-left: 851px;
-angle: 0 deg;
-opacity: 1;
+  height: 392.0204162597656;
+  top: 5136px;
+  left: 851px;
+  angle: 0 deg;
+  opacity: 1;
 
 }
 
@@ -863,36 +912,6 @@ opacity: 1;
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-/* "Hire me" pill button */
-.hire-me-btn {
-  background: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%);
-  color: #121212;
-  font-weight: 500;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 16px;
-  text-decoration: none;
-}
-/* Inner border effect (mimicked by slightly smaller background) */
-.hire-btn::before {
-  content: '';
-  position: absolute;
-  inset: 1px; 
-  background-color: var(--nav-bg); 
-  border-radius: 50px;
-  z-index: -1; 
-}
-
-/* Optional: Add a subtle outer glow on hover, similar to the image */
-.hire-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(122, 135, 251, 0.4); 
-  background: #FFFFFF; 
-  color: #FFFFFF;
 }
 
 /* Separate circular profile icon button */
@@ -1134,6 +1153,8 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
 
 /* For mobile screens */
 @media (max-width: 768px) {
+
+  /* Navbar adjustments */
   .navbar {
     flex-wrap: wrap;
   }
@@ -1163,8 +1184,9 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
     display: none;
   }
 
+  /* Hero section */
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .hero-content p {
@@ -1193,41 +1215,67 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
     padding: 80px 20px;
   }
 
-  footer {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 40px 20px;
-  }
-
-  footer .footer-actions {
-    flex-direction: column;
+  /* --- Minimalist Footer --- */
+   .site-footer {
+    display: flex;
+    flex-wrap: wrap; /* allow wrapping on small screens */
+    justify-content: center;
     align-items: center;
     gap: 16px;
+    padding: 24px 16px;
+    background: var(--footer-bg, #111);
+    color: var(--footer-text, #eee);
+    text-align: center;
   }
 
-  footer .footer-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  footer .social-links {
-    justify-content: center;
+  footer {
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    background: inherit;
+  }
+
+  footer .footer-actions,
+  footer .footer-links,
+  footer .social-links {
+    display: flex;
+    flex-direction: row; /* turn into rows */
+    flex-wrap: wrap;     /* allows to wrap if space is small */
+    justify-content: center;
+    align-items: center;
     gap: 12px;
   }
 
-  footer p,
-  footer a {
+  footer .footer-links a,
+  footer .social-links a {
     font-size: 0.9rem;
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  footer .footer-links a:hover,
+  footer .social-links a:hover {
+    color: #58a6ff;
+    transform: translateY(-2px);
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin: 0;
   }
 }
+
 
 /* For very small phones */
 @media (max-width: 480px) {
   .hero-content h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
    .process-section {
@@ -1275,7 +1323,6 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
     margin-top: 10px;
   }
 
-  .hire-btn,
   .cta-button {
     padding: 10px 20px;
     font-size: 0.9rem;
@@ -1315,5 +1362,23 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
 
   footer .social-links a {
     font-size: 1.1rem;
+  }
+  .site-footer {
+    flex-direction: column; /* Stack all items vertically */
+    align-items: center;    /* Center them */
+    gap: 32px;              /* Space between logo, socials, and actions */
+    padding: 40px 16px;     /* Good mobile padding */
+  }
+
+  .footer-actions {
+    flex-direction: column; /* Also stack the button and icon */
+    align-items: center;    /* Center them */
+    gap: 24px;              /* Space between button and icon */
+  }
+  
+  /* Make social pill a bit smaller */
+  .social-links {
+    padding: 6px 10px;
+    gap: 8px;
   }
 }
