@@ -405,7 +405,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: flex-start !important; 
+  align-items: flex-start; 
 }
 
 .step-content h3 {
@@ -983,11 +983,9 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
 }
 
 
-/* Responsive adjustments for new sections */
-/* --- Responsive Styles --- */
-
+/* Responsive adjustments for new sections *
 /* For Tablets and Smaller Desktops */
-/* @media (max-width: 1024px) {
+@media (max-width: 1024px) {
   .page-wrapper {
     padding: 0 30px;
   }
@@ -1034,10 +1032,10 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
   .deco-grid {
     display: none;
   }
-} */
+}
 
 /* ---------------- Responsive Styles ---------------- */
-/* @media (max-width: 992px) {
+@media (max-width: 992px) {
   .page-wrapper {
     padding: 0 20px;
   }
@@ -1139,7 +1137,7 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
   footer .social-links {
     justify-content: center;
   }
-} */
+}
 
 /* For mobile screens */
 @media (max-width: 768px) {
@@ -1329,6 +1327,7 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
 /* For very small phones */
 @media (max-width: 480px) {
   .hero-content h1 {
+    font-size: 1.6rem;
     font-size: 1.5rem;
   }
 
@@ -1368,20 +1367,16 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
   }
 
   .step-icon {
-  margin-bottom: 8px;
-  width: 60px;
-  height: auto;
-  flex-shrink: 0; /* keeps logo from shrinking too small */
-  border-radius: 12px; /* optional, for softer edges */
-  object-fit: contain;
-
+    margin-bottom: 8px; /* space below icon */
   }
 
   .examples-btn {
-    padding: 6px 16px;
     font-size: 0.85rem;
+    padding: 8px 16px;
+    margin-top: 10px;
   }
 
+  .hire-btn,
   .cta-button {
     padding: 10px 20px;
     font-size: 0.9rem;
