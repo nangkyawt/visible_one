@@ -46,12 +46,6 @@ header {
   flex-shrink: 0;
 }
 
-/* .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 0;
-} */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -370,34 +364,35 @@ header {
 }
 
 .process-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 60px !important;
+  position: relative !important;
+
 }
 
 
 .step-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 30px;
-  position: relative;
-  flex-wrap: wrap; 
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 30px !important;
+  position: relative !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
 }
 
 .step-number {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-color);
-  flex-shrink: 0;
-  background-color: var(--nav-bg);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-size: 1.1rem !important;
+  background-color: var(--nav-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-color) !important;
+  flex-shrink: 0 !important;
 }
 
 .step-content {
@@ -405,7 +400,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: flex-start; 
+  /* align-items: flex-start;  */
 }
 
 .step-content h3 {
@@ -422,16 +417,21 @@ header {
   color: #FFFFFF;
   line-height: 1.6;
   max-width: 400px;
-  text-align: left;
+  /* text-align: left; */
 }
 
-.step-icon {
+/* .step-icon {
 width: 56.00000531260322;
 height: 56.00000531260322;
 top: -3px;
 left: -0px;
 angle: -87 deg;
 opacity: 1;
+} */
+ .step-icon img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
 }
 
 .examples-btn {
@@ -1000,8 +1000,9 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
 
   .process-section h2 {
     font-size: 2rem;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
   }
+  
 
   .process-steps {
     gap: 30px;
@@ -1057,19 +1058,56 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
     align-items: center;
   }
 
-  .step-item {
-    flex: 1 1 100%;
-    max-width: 480px;
-    text-align: center;
-    align-items: center;
-    padding: 28px;
+  /* --- Process Section Steps: Keep side-by-side --- */
+  .process-section .process-steps .step-item {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    flex: unset !important;
+    padding: 0 !important;
+    text-align: left !important;
   }
 
-   .step-number {
-    font-size: 2rem;
-    margin-bottom: 0; 
-    margin-right: 8px;
-    min-width: 40px; 
+  .process-section .process-steps .step-number {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1rem !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .process-section .process-steps .step-content {
+    flex: 1 !important;
+  }
+
+  .process-section .process-steps .step-content h3 {
+    font-size: 1.2rem !important;
+  }
+
+  .process-section .process-steps .step-content p {
+    font-size: 0.9rem !important;
+  }
+
+  .process-section .examples-btn {
+    font-size: 0.85rem !important;
+    padding: 6px 14px !important;
+  }
+  /* --- End Process Section Steps --- */
+
+  .step-item {
+    flex-direction: row !important;
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .step-number {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    flex: 1;
     text-align: left;
   }
 
@@ -1077,7 +1115,7 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
     font-size: 1.1rem;
   }
 
-   .step-content p {
+  .step-content p {
     font-size: 0.95rem;
     color: #FFFFFF;
     line-height: 1.6;
@@ -1089,6 +1127,7 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
   .btn-gradient-border {
     margin-top: 10px;
   }
+
   .project-item {
     flex-direction: column;
     align-items: flex-start;
@@ -1116,7 +1155,8 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
   .deco-grid {
     margin: 0 auto;
   }
-   footer {
+
+  footer {
     padding: 50px 40px;
     gap: 30px;
   }
@@ -1138,6 +1178,7 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
     justify-content: center;
   }
 }
+
 
 /* For mobile screens */
 @media (max-width: 768px) {
@@ -1180,58 +1221,76 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
   .hero-content p {
     font-size: 0.9rem;
   }
+ .process-section .process-steps .step-item {
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  flex: unset !important;
+  padding: 0 !important;
+}
 
- .process-section {
-    padding: 50px 20px;
-    margin: 20px auto;
-  }
+.process-section .process-steps .step-number {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 1rem !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
 
-  .process-section h2 {
+.process-section .process-steps .step-content {
+  flex: 1 !important;
+}
+
+.process-section .process-steps .step-content h3 {
+  font-size: 1.2rem !important;
+}
+
+.process-section .process-steps .step-content p {
+  font-size: 0.9rem !important;
+}
+
+.process-section .examples-btn {
+  font-size: 0.85rem !important;
+  padding: 6px 14px !important;
+}
+
+  /* .process-section h2 {
     font-size: 1.8rem;
     margin-bottom: 40px;
   }
 
   .process-steps {
-    gap: 40px;
-  }
-
-  .step-item {
-    flex-direction: row;
+    gap: 40px !important;
+  } */
+/* 
+    .step-item {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 12px !important;
+  } */
+/* .step-item {
+    flex-direction: row !important;
     align-items: flex-start;
+    text-align: left;
     gap: 16px;
-  }
+  } */
 
-.step-number {
-    /* Undo the desktop circle styles */
-    width: auto;
-    height: auto;
-    border: none;
-    background-color: transparent;
-    border-radius: 0;
-    display: block; /* Disable flex centering from desktop */
 
-    /* Apply new faint text style */
-    color: #30363d; /* Faint grey color */
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-top: 10px; /* Align with content */
-    margin-bottom: 0;
-    flex-shrink: 0; /* Keep it from shrinking */
-  }
+  /* .step-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.9rem !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 0 !important;
+  } */
 
-  .step-content {
-    flex-basis: calc(100% - 50px);
-    gap: 8px;
-  }
-
-  .step-content h3 {
-    font-size: 1.1rem;
+  /* .step-content h3 {
+    font-size: 1rem;
   }
 
   .step-content p {
-    max-width: 100%;
     font-size: 0.9rem;
-    text-align: left;
   }
 
   .step-icon {
@@ -1242,19 +1301,18 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
   }
 
   .examples-btn {
-    align-self: flex-start;
-    padding: 6px 16px;
+   padding: 6px 16px;
     font-size: 0.85rem;
-    margin-top: 6px;
-  }
+  
+  } */
 
-  .step-avatars {
+  /* .step-avatars {
     position: static;
     margin-left: 0;
     margin-top: 16px;
     justify-content: center;
     top: 0;
-  }
+  } */
   .testimonials-grid {
     grid-template-columns: 1fr;
   }
@@ -1326,54 +1384,67 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
 
 /* For very small phones */
 @media (max-width: 480px) {
+
+  .page-wrapper {
+  padding: 0 16px;
+  }
+
   .hero-content h1 {
     font-size: 1.6rem;
     font-size: 1.5rem;
   }
 
-   .process-section {
-    padding: 50px 16px;
+  .process-section .step-number {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.1rem !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: var(--nav-bg) !important;
+    color: var(--text-color) !important;
+  }  .process-section .process-steps .step-item {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    flex: unset !important;
+    padding: 0 !important;
+  }  .process-section .process-steps .step-content {
+    flex: 1 !important;
   }
 
   .process-section h2 {
     font-size: 1.6rem;
   }
 
-  .process-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* space between steps */
+    .step-content h3 {
+    font-size: 1.1rem;
   }
-
-  .step-item {
-    display: flex;
-    flex-direction: column; /* stack number above content */
-    align-items: center; /* center everything */
-    text-align: center; /* center text */
-    padding: 20px 16px;
-  }
-
-  .step-number {
-    font-size: 2rem; /* larger and centered */
-    margin-bottom: 12px; /* space between number and content */
-  }
-
-  .step-content h3 {
-    font-size: 1.05rem;
-  }
-
   .step-content p {
     font-size: 0.9rem;
   }
 
-  .step-icon {
-    margin-bottom: 8px; /* space below icon */
-  }
+  .step-content {
+    flex: 1; 
+}
+
+.testimonials h2 {
+    color: #FFFFFF;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 48px;
+    display: flex
+;
+    align-items: center;
+    gap: 12px;
+}
 
   .examples-btn {
-    font-size: 0.85rem;
-    padding: 8px 16px;
-    margin-top: 10px;
+  font-size: 0.85rem;
+ padding: 6px 12px;
+    /* margin-top: 10px; */
   }
 
   .hire-btn,
@@ -1395,7 +1466,7 @@ border-image-source: linear-gradient(269.57deg, #7A87FB 0.72%, #FFD49C 99.22%)
   }
 
   .cta-content h2 {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
   footer {
     padding: 30px 16px;
